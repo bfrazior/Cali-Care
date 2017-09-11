@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D410A1BB-D242-4DD9-9560-4633C1AC4FC5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CaliCare.Conditions</RootNamespace>
+    <AssemblyName>CaliCare.Conditions</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MediatR, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\MediatR.3.0.1\lib\net45\MediatR.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\Commands\Handlers\SeedTopographiesCommandHandler.cs" />
+    <Compile Include="Application\Commands\Handlers\StoreConditionCommandHandler.cs" />
+    <Compile Include="Application\Commands\SeedTopographiesCommand.cs" />
+    <Compile Include="Application\Commands\StoreConditionCommand.cs" />
+    <Compile Include="Application\ConditionConverter.cs" />
+    <Compile Include="Application\Queries\CreateConditionQuery.cs" />
+    <Compile Include="Application\Queries\GetConditionsQuery.cs" />
+    <Compile Include="Application\Queries\GetConditionQuery.cs" />
+    <Compile Include="Application\Queries\GetTopographyQuery.cs" />
+    <Compile Include="Application\Queries\Handlers\CreateConditionQueryHandler.cs" />
+    <Compile Include="Application\Queries\Handlers\GetConditionQueryHandler.cs" />
+    <Compile Include="Application\Queries\Handlers\GetConditionsQueryHandler.cs" />
+    <Compile Include="Application\Queries\GetTopographiesQuery.cs" />
+    <Compile Include="Application\Queries\Handlers\GetTopographiesQueryHandler.cs" />
+    <Compile Include="Application\Queries\Handlers\GetTopographyQueryHandler.cs" />
+    <Compile Include="Common\ConditionType.cs" />
+    <Compile Include="Domain\PatientCondition.cs" />
+    <Compile Include="Common\ConditionClassification.cs" />
+    <Compile Include="Common\TopographyClassification.cs" />
+    <Compile Include="Domain\Topography.cs" />
+    <Compile Include="Ports\DataTransferObjects\PatientConditionDto.cs" />
+    <Compile Include="Ports\DataTransferObjects\TopographyDto.cs" />
+    <Compile Include="Ports\Repositories\IConditionRepository.cs" />
+    <Compile Include="Ports\Repositories\ITopographyRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\CaliCare.Infrastructure\CaliCare.Infrastructure.csproj">
+      <Project>{5334f0da-4c81-4472-9ddf-dda6f72fce9c}</Project>
+      <Name>CaliCare.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
