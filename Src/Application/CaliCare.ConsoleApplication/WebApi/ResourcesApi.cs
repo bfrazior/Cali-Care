@@ -7,7 +7,7 @@ namespace CaliCare.ConsoleApplication.WebApi
 {
    public static class ResourcesApi
    {
-      public static DepartmentDto[] GetAllDepartments()
+      public static DepartmentDto[] GetDepartments()
       {
          using (var client = new CaliCareHttpClient())
          {

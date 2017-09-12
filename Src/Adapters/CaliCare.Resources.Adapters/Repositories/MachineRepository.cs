@@ -22,6 +22,9 @@ namespace CaliCare.Resources.Adapters.Repositories
       public IReadOnlyList<Machine> FindAll(MachineCapability capability)
          => FindAll().Where(x => x.Characterization.Capability == capability).ToList();
 
+      public Machine FindByRoomId(Guid roomId)
+         => FindAll().Where(x => x.RoomId == roomId).SingleOrDefault();
+
       public void Store(Machine[] aggregates)
          => File.WriteAllText(_jsonPath, JsonConvert.SerializeObject(aggregates));
    }

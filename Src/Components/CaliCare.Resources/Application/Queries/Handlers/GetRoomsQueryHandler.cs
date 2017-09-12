@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using CaliCare.Infrastructure.Interfaces;
@@ -17,6 +18,11 @@ namespace CaliCare.Resources.Application.Queries.Handlers
       }
 
       public IReadOnlyList<RoomDto> Handle(GetRoomsQuery message)
-         => _roomRepository.FindAll().Select(x => ResourceConverter.ConvertToDto(x)).ToList();
+      {
+         if (message.DepartmentId == Guid.Empty)
+            throw new ArgumentException($"{nameof(message.DepartmentId)} cannot be empty.");
+
+         return _roomRepository.FindAll(message.DepartmentId).Select(x => ResourceConverter.ConvertToDto(x)).ToList();
+      }
    }
 }

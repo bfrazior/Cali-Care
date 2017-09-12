@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 
 using MediatR;
@@ -19,43 +20,34 @@ namespace CaliCare.WebApi.Adapters.Controllers
          _mediator = mediator;
       }
 
-      [Route("machines/{filterAdvanced:bool}")]
-      public IEnumerable<MachineDto> GetMachines(bool filterAdvanced)
-      {
-         return _mediator.SendSync(new GetMachinesQuery() { FilterAdvancedMachines = filterAdvanced });
-      }
-
       [Route("departments")]
       public IEnumerable<DepartmentDto> GetDepartments()
       {
          return _mediator.SendSync(new GetDepartmentsQuery());
       }
 
-      // GET: api/Resource
-      public IEnumerable<string> Get()
+      [Route("machines/{filterAdvanced:bool}")]
+      public IEnumerable<MachineDto> GetMachines(bool filterAdvanced)
       {
-         return new string[] { "value1", "value2" };
+         return _mediator.SendSync(new GetMachinesQuery() { FilterAdvancedMachines = filterAdvanced });
       }
 
-      // GET: api/Resource/5
-      public string Get(int id)
+      [Route("machines/room/{roomId:Guid}")]
+      public MachineDto GetMachineInRoom(Guid roomId)
       {
-         return "value";
+         return _mediator.SendSync(new GetMachineByRoomIdQuery() { RoomId = roomId });
       }
 
-      // POST: api/Resource
-      public void Post([FromBody]string value)
+      [Route("physicians")]
+      public IEnumerable<PhysicianDto> GetPhysicians()
       {
+         return _mediator.SendSync(new GetPhysiciansQuery());
       }
 
-      // PUT: api/Resource/5
-      public void Put(int id, [FromBody]string value)
+      [Route("rooms/{departmentId:Guid}")]
+      public IEnumerable<RoomDto> GetRooms(Guid departmentId)
       {
-      }
-
-      // DELETE: api/Resource/5
-      public void Delete(int id)
-      {
+         return _mediator.SendSync(new GetRoomsQuery() { DepartmentId = departmentId });
       }
    }
 }

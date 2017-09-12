@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using CaliCare.Resources.Domain;
 using CaliCare.Resources.Common;
@@ -9,5 +10,7 @@ namespace CaliCare.Resources.Ports.Repositories
    public interface IMachineRepository : IRepository<Machine>
    {
       IReadOnlyList<Machine> FindAll(MachineCapability capability);
+
+      Machine FindByRoomId(Guid roomId);
    }
 }

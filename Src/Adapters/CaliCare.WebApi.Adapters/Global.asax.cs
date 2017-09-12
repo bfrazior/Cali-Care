@@ -32,6 +32,7 @@ namespace CaliCare.WebApi.Adapters
          mediator.SendSync(new SeedDepartmentsCommand());
          mediator.SendSync(new SeedRoomsCommand());
          mediator.SendSync(new SeedMachinesCommand());
+         mediator.SendSync(new SeedPhysiciansCommand());
 
          mediator.SendSync(new SeedTopographiesCommand());
       }

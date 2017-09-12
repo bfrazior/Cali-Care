@@ -17,7 +17,7 @@ namespace CaliCare.Resources.Application.Commands.Handlers
       {
          var departments = new Department[]
          {
-            Department.Create("Rad")
+            Department.Create("Los Gatos Radiation Oncology")
          };
 
          _departmentRepository.Store(departments);

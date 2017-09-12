@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using System;
+
+using MediatR;
 
 using CaliCare.Infrastructure.Interfaces;
 using CaliCare.Resources.Domain;
@@ -23,11 +25,11 @@ namespace CaliCare.Resources.Application.Commands.Handlers
 
       public void Handle(SeedRoomsCommand message)
       {
-         var radDept = _mediator.SendSync(new GetDepartmentByNameQuery() { Name = "Rad" });
-         if (radDept == null)
-            return;
+         var department = _mediator.SendSync(new GetDepartmentByNameQuery() { Name = "Los Gatos Radiation Oncology" });
+         if (department == null)
+            throw new InvalidOperationException($"{nameof(GetDepartmentByNameQuery)} failed to return a result.");
 
-         var departmentId = radDept.Id;
+         var departmentId = department.Id;
          var rooms = new Room[]
          {
             Room.Create("One", departmentId),

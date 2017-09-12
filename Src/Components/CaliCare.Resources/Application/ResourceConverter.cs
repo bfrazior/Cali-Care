@@ -1,10 +1,24 @@
-﻿using CaliCare.Resources.Domain;
+﻿using System;
+using CaliCare.Resources.Domain;
 using CaliCare.Resources.Ports.DataTransferObjects;
 
 namespace CaliCare.Resources.Application
 {
    internal static class ResourceConverter
    {
+      public static Physician ConvertToDomain(PhysicianDto physicianDto)
+         => physicianDto == null ? null : new Physician(
+            physicianDto.Id,
+            ConvertToDomain(physicianDto.Name),
+            physicianDto.Roles);
+
+      public static PhysicianName ConvertToDomain(PhysicianNameDto name)
+         => name == null ? null : new PhysicianName(
+            name.FirstName,
+            name.MiddleName,
+            name.LastName,
+            name.UserName);
+
       public static PhysicianDto ConvertToDto(Physician physician)
          => physician == null ? null : new PhysicianDto()
          {

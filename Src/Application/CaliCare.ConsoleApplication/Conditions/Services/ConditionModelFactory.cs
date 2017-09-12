@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 using CaliCare.Conditions.Ports.DataTransferObjects;
 using CaliCare.ConsoleApplication.Conditions.Models;
+using CaliCare.ConsoleApplication.WebApi;
 
 namespace CaliCare.ConsoleApplication.Conditions.Services
 {

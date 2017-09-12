@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -16,6 +17,9 @@ namespace CaliCare.Resources.Adapters.Repositories
 
       public IReadOnlyList<Room> FindAll()
          => JsonConvert.DeserializeObject<Room[]>(File.ReadAllText(_jsonPath)).ToList();
+
+      public IReadOnlyList<Room> FindAll(Guid departmentId)
+         => FindAll().Where(x => x.DepartmentId == departmentId).ToList();
 
       public void Store(Room[] aggregates)
          => File.WriteAllText(_jsonPath, JsonConvert.SerializeObject(aggregates));

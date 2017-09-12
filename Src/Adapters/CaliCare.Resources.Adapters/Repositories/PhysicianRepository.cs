@@ -15,7 +15,17 @@ namespace CaliCare.Resources.Adapters.Repositories
       private readonly string _jsonPath = Path.Combine(AppDomainUtility.GetAppDomainPath(), "physicians.json");
 
       public IReadOnlyList<Physician> FindAll()
-         => JsonConvert.DeserializeObject<Physician[]>(File.ReadAllText(_jsonPath)).ToList();
+      {
+         try { return JsonConvert.DeserializeObject<Physician[]>(File.ReadAllText(_jsonPath)).ToList(); }
+         catch { return new List<Physician>(); }
+      }
+
+      public void Store(Physician physician)
+      {
+         var physicians = FindAll().ToList();
+         physicians.Add(physician);
+         Store(physicians.ToArray());
+      }
 
       public void Store(Physician[] aggregates)
          => File.WriteAllText(_jsonPath, JsonConvert.SerializeObject(aggregates));

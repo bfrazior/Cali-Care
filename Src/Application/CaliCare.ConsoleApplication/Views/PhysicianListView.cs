@@ -30,6 +30,7 @@ namespace CaliCare.ConsoleApplication.Views
             table.AddRow(fullName, userName, roles);
          }
 
+         Console.WriteLine();
          Console.WriteLine("--Physician List");
          table.Write();
       }

@@ -46,16 +46,22 @@
   <ItemGroup>
     <Compile Include="Application\Commands\Handlers\SeedDepartmentsCommandHandler.cs" />
     <Compile Include="Application\Commands\Handlers\SeedMachineCommandHandler.cs" />
+    <Compile Include="Application\Commands\Handlers\SeedPhysiciansCommandHandler.cs" />
     <Compile Include="Application\Commands\Handlers\SeedRoomsCommandHandler.cs" />
+    <Compile Include="Application\Commands\Handlers\StorePhysicianCommandHandler.cs" />
     <Compile Include="Application\Commands\SeedDepartmentsCommand.cs" />
     <Compile Include="Application\Commands\SeedMachinesCommand.cs" />
+    <Compile Include="Application\Commands\SeedPhysiciansCommand.cs" />
     <Compile Include="Application\Commands\SeedRoomsCommand.cs" />
+    <Compile Include="Application\Commands\StorePhysicianCommand.cs" />
     <Compile Include="Application\Queries\GetDepartmentByNameQuery.cs" />
+    <Compile Include="Application\Queries\GetMachineByRoomIdQuery.cs" />
     <Compile Include="Application\Queries\GetPhysiciansQuery.cs" />
     <Compile Include="Application\Queries\GetRoomsQuery.cs" />
     <Compile Include="Application\Queries\Handlers\GetDepartmentQueryHandler.cs" />
     <Compile Include="Application\Queries\GetDepartmentsQuery.cs" />
     <Compile Include="Application\Queries\Handlers\GetDepartmentsQueryHandler.cs" />
+    <Compile Include="Application\Queries\Handlers\GetMachineByRoomIdQueryHandler.cs" />
     <Compile Include="Application\Queries\Handlers\GetPhysiciansQueryHandler.cs" />
     <Compile Include="Application\Queries\Handlers\GetRoomsQueryHandler.cs" />
     <Compile Include="Application\ResourceConverter.cs" />

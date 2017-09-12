@@ -27,7 +27,11 @@ namespace CaliCare.Resources.Application.Commands.Handlers
 
       public void Handle(SeedMachinesCommand message)
       {
-         var rooms = _mediator.SendSync(new GetRoomsQuery());
+         var department = _mediator.SendSync(new GetDepartmentByNameQuery() { Name = "Los Gatos Radiation Oncology" });
+         if (department == null)
+            throw new InvalidOperationException($"{nameof(GetDepartmentByNameQuery)} failed to return a result.");
+
+         var rooms = _mediator.SendSync(new GetRoomsQuery() { DepartmentId = department.Id });
          if (rooms.Count == 0)
             throw new InvalidOperationException($"{nameof(GetRoomsQuery)} failed to return a result.");
 

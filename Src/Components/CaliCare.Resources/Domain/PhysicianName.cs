@@ -7,7 +7,7 @@
       public string LastName { get; }
       public string UserName { get; }
 
-      internal PhysicianName(string firstName, string middleName, string lastName, string userName)
+      public PhysicianName(string firstName, string middleName, string lastName, string userName)
       {
          FirstName = firstName;
          MiddleName = middleName;

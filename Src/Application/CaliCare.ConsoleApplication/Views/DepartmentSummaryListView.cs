@@ -12,7 +12,7 @@ namespace CaliCare.ConsoleApplication.Views
          Console.WriteLine();
          Console.WriteLine("--Department Summary List");
 
-         var departments = ResourcesApi.GetAllDepartments();
+         var departments = ResourcesApi.GetDepartments();
          foreach(var department in departments)
          {
             var table = new ConsoleTable("Department Name");
