@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 
-using CaliCare.ConsoleApplication.Utilities;
 using CaliCare.Patients.Ports.DataTransferObjects;
 
 namespace CaliCare.ConsoleApplication.WebApi

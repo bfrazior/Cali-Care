@@ -5,7 +5,7 @@ using ConsoleTables;
 
 namespace CaliCare.ConsoleApplication.Views
 {
-   public static class PatientList
+   public static class PatientListView
    {
       public static void Show()
       {
@@ -21,7 +21,8 @@ namespace CaliCare.ConsoleApplication.Views
             table.AddRow(fullName, patient.Name.PreferredName);
          }
 
-         Console.WriteLine("--Patients List");
+         Console.WriteLine();
+         Console.WriteLine("--Patient List");
          table.Write();
       }
    } 

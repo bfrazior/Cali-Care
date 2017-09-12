@@ -2,16 +2,16 @@
 
 namespace CaliCare.ConsoleApplication.Views
 {
-   public static class PatientMenu
+   public static class ResourcesSubMenuView
    {
       public static void Show()
       {
          do
          {
             Console.WriteLine();
-            Console.WriteLine("--Cali-Care Patients--");
-            Console.WriteLine("1. Register Patient");
-            Console.WriteLine("2. List Patients");
+            Console.WriteLine("--Cali-Care Resources--");
+            Console.WriteLine("1. Physician List");
+            Console.WriteLine("2. Department Summary List");
             Console.WriteLine("0. Return to Main Menu");
             Console.WriteLine();
             Console.Write("Enter Choice: ");
@@ -24,10 +24,10 @@ namespace CaliCare.ConsoleApplication.Views
                break;
 
             if (selectedChoice == 1)
-               RegisterPatientInput.Show();
+               PhysicianListView.Show();
 
             if (selectedChoice == 2)
-               PatientList.Show();
+               DepartmentSummaryListView.Show();
 
          } while (true);
       }

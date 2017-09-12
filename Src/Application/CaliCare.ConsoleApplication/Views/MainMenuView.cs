@@ -2,7 +2,7 @@
 
 namespace CaliCare.ConsoleApplication.Views
 {
-   public static class MainMenu
+   public static class MainMenuView
    {
       public static void Show()
       {
@@ -24,10 +24,10 @@ namespace CaliCare.ConsoleApplication.Views
                break;
 
             if (selectedChoice == 1)
-               PatientMenu.Show();
+               PatientSubMenuView.Show();
 
             if (selectedChoice == 2)
-               continue;
+               ResourcesSubMenuView.Show();
 
          } while (true);
       }

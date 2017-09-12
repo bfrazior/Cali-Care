@@ -5,7 +5,6 @@ using System.Linq;
 using Newtonsoft.Json;
 
 using CaliCare.Conditions.Ports.DataTransferObjects;
-using CaliCare.ConsoleApplication.Utilities;
 
 namespace CaliCare.ConsoleApplication.WebApi
 {
