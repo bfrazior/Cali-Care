@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliCare.ConsoleApplication
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliCare.Registration.Adapters", "Src\Adapters\CaliCare.Registration.Adapters\CaliCare.Registration.Adapters.csproj", "{DA982B5B-FCD2-4AF2-8978-0FDEAA475699}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliCare.Scheduling.Adapters", "Src\Adapters\CaliCare.Scheduling.Adapters\CaliCare.Scheduling.Adapters.csproj", "{D433B1F9-73C9-4826-8267-01B98441AD8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{DA982B5B-FCD2-4AF2-8978-0FDEAA475699}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA982B5B-FCD2-4AF2-8978-0FDEAA475699}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA982B5B-FCD2-4AF2-8978-0FDEAA475699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D433B1F9-73C9-4826-8267-01B98441AD8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D433B1F9-73C9-4826-8267-01B98441AD8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D433B1F9-73C9-4826-8267-01B98441AD8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D433B1F9-73C9-4826-8267-01B98441AD8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -124,5 +130,6 @@ Global
 		{95F20DE6-6C75-4863-A237-62625EFB6322} = {7923D492-5291-49DF-B140-8215FE8AB81D}
 		{4410C6D5-0D36-4290-9C2C-C82BF37A78BE} = {9A63E61C-7616-4BF8-ACC7-40DB941826DE}
 		{DA982B5B-FCD2-4AF2-8978-0FDEAA475699} = {7923D492-5291-49DF-B140-8215FE8AB81D}
+		{D433B1F9-73C9-4826-8267-01B98441AD8B} = {7923D492-5291-49DF-B140-8215FE8AB81D}
 	EndGlobalSection
 EndGlobal

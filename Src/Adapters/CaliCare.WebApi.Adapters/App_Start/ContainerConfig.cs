@@ -1,25 +1,28 @@
-﻿using CaliCare.Conditions.Domain;
-using CaliCare.Patients.Domain;
-using CaliCare.Registration.Domain;
-using CaliCare.Resources.Domain;
-using CaliCare.Scheduling.Domain;
-using MediatR;
-using SimpleInjector;
-using SimpleInjector.Lifestyles;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web.Http;
-using System;
-using CaliCare.Resources.Ports.Repositories;
-using CaliCare.Resources.Adapters.Repositories;
-using CaliCare.Patients.Ports.Repositories;
-using CaliCare.Patients.Adapters.Repositories;
-using CaliCare.Registration.Ports.Services;
-using CaliCare.Registration.Adapters.Services;
+
+using MediatR;
 using MediatR.Pipeline;
-using CaliCare.Conditions.Ports.Repositories;
+using SimpleInjector;
+using SimpleInjector.Lifestyles;
+
 using CaliCare.Conditions.Adapters.Repositories;
+using CaliCare.Conditions.Ports.Repositories;
+using CaliCare.Patients.Adapters.Repositories;
+using CaliCare.Patients.Domain;
+using CaliCare.Patients.Ports.Repositories;
+using CaliCare.Registration.Adapters.Services;
+using CaliCare.Registration.Domain;
+using CaliCare.Registration.Ports.Services;
+using CaliCare.Resources.Adapters.Repositories;
+using CaliCare.Resources.Domain;
+using CaliCare.Resources.Ports.Repositories;
+using CaliCare.Scheduling.Adapters.Repositories;
+using CaliCare.Scheduling.Domain;
+using CaliCare.Scheduling.Ports.Repositories;
 
 namespace CaliCare.WebApi.Adapters.App_Start
 {
@@ -34,6 +37,7 @@ namespace CaliCare.WebApi.Adapters.App_Start
          PatientRegistrations(container);
          RegistrationRegistrations(container);
          ResourceRegistrations(container);
+         SchedulingRegistrations(container);
 
          MediatorRegistrations(container);
 
@@ -41,6 +45,11 @@ namespace CaliCare.WebApi.Adapters.App_Start
          container.Verify();
 
          return container;
+      }
+
+      private static void SchedulingRegistrations(Container container)
+      {
+         container.Register<IClinicalActivityRepository, ClinicalActivityRepository>();
       }
 
       private static void ConditionRegistrations(Container container)

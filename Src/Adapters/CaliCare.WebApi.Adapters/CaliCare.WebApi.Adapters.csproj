@@ -121,6 +121,7 @@
   <ItemGroup>
     <Compile Include="App_Start\ContainerConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\DataConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ConditionsController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
@@ -151,6 +152,7 @@
     <Content Include="App_Data\departments.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="App_Data\clinicalActivities.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -199,6 +201,10 @@
     <ProjectReference Include="..\CaliCare.Resources.Adapters\CaliCare.Resources.Adapters.csproj">
       <Project>{47452dc9-c9e6-455c-9229-1f9c2c575148}</Project>
       <Name>CaliCare.Resources.Adapters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CaliCare.Scheduling.Adapters\CaliCare.Scheduling.Adapters.csproj">
+      <Project>{d433b1f9-73c9-4826-8267-01b98441ad8b}</Project>
+      <Name>CaliCare.Scheduling.Adapters</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

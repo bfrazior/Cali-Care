@@ -8,7 +8,6 @@ namespace CaliCare.Scheduling.Domain
    public class Appointment : IAggregateRoot
    {
       public Guid Id { get; }
-
       public Guid ClinicalActivityId { get; }
       public string Context { get; }
       public int LengthInMins { get; }

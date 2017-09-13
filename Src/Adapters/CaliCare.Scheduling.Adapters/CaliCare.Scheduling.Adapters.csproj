@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7F420F1A-2DAB-43E7-97ED-8A002A6705D8}</ProjectGuid>
+    <ProjectGuid>{D433B1F9-73C9-4826-8267-01B98441AD8B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CaliCare.Scheduling</RootNamespace>
-    <AssemblyName>CaliCare.Scheduling</AssemblyName>
+    <RootNamespace>CaliCare.Scheduling.Adapters</RootNamespace>
+    <AssemblyName>CaliCare.Scheduling.Adapters</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MediatR, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\MediatR.3.0.1\lib\net45\MediatR.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -44,27 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Commands\Handlers\ScheduleAppointmentCommandHandler.cs" />
-    <Compile Include="Application\Commands\Handlers\SeedClinicalActivitiesCommandHandler.cs" />
-    <Compile Include="Application\Commands\ScheduleAppointmentCommand.cs" />
-    <Compile Include="Application\Commands\SeedClinicalActivitiesCommand.cs" />
-    <Compile Include="Application\SchedulingConverter.cs" />
-    <Compile Include="Common\AppointmentStatus.cs" />
-    <Compile Include="Domain\Appointment.cs" />
-    <Compile Include="Domain\ClinicalActivity.cs" />
-    <Compile Include="Ports\DataTransferObjects\ClinicalActivityDto.cs" />
-    <Compile Include="Ports\Repositories\IClinicalActivityRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IAppointmentSlotService.cs" />
-    <Compile Include="Services\AppointmentSlotService.cs" />
+    <Compile Include="Repositories\ClinicalActivityRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Components\CaliCare.Scheduling\CaliCare.Scheduling.csproj">
+      <Project>{7f420f1a-2dab-43e7-97ed-8a002a6705d8}</Project>
+      <Name>CaliCare.Scheduling</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\CaliCare.Infrastructure\CaliCare.Infrastructure.csproj">
-      <Project>{5334f0da-4c81-4472-9ddf-dda6f72fce9c}</Project>
+      <Project>{5334F0DA-4C81-4472-9DDF-DDA6F72FCE9C}</Project>
       <Name>CaliCare.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

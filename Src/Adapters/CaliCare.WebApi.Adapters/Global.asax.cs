@@ -8,9 +8,6 @@ using MediatR;
 using SimpleInjector.Integration.WebApi;
 
 using CaliCare.WebApi.Adapters.App_Start;
-using CaliCare.Infrastructure.Extensions;
-using CaliCare.Resources.Application.Commands;
-using CaliCare.Conditions.Application.Commands;
 
 namespace CaliCare.WebApi.Adapters
 {
@@ -28,13 +25,7 @@ namespace CaliCare.WebApi.Adapters
          RouteConfig.RegisterRoutes(RouteTable.Routes);
 
          // Seed data
-         var mediator = container.GetInstance<IMediator>();
-         mediator.SendSync(new SeedDepartmentsCommand());
-         mediator.SendSync(new SeedRoomsCommand());
-         mediator.SendSync(new SeedMachinesCommand());
-         mediator.SendSync(new SeedPhysiciansCommand());
-
-         mediator.SendSync(new SeedTopographiesCommand());
+         DataConfig.Seed(container.GetInstance<IMediator>());
       }
    }
 }
