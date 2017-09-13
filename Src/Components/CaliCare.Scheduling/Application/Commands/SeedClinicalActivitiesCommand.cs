@@ -1,6 +1,6 @@
 ﻿using CaliCare.Infrastructure.Interfaces;
 
-namespace CaliCare.Scheduling.Application.Commands
+namespace CaliCare.Schedule.Application.Commands
 {
    public class SeedClinicalActivitiesCommand : ICommand
    {

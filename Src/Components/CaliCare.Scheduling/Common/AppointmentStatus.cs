@@ -1,12 +1,10 @@
-﻿namespace CaliCare.Scheduling.Common
+﻿namespace CaliCare.Schedule.Common
 {
    public enum AppointmentStatus
    {
       Pending,
-      InProgress,
       Completed,
       Cancelled,
       NoShow,
-      MachineDown
    }
 }

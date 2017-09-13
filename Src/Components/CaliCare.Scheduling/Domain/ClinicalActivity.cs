@@ -2,7 +2,7 @@
 
 using CaliCare.Infrastructure.Interfaces;
 
-namespace CaliCare.Scheduling.Domain
+namespace CaliCare.Schedule.Domain
 {
    public class ClinicalActivity : IAggregateRoot
    {

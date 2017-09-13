@@ -126,6 +126,7 @@
     <Compile Include="Controllers\ConditionsController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -153,6 +154,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\clinicalActivities.json" />
+    <Content Include="App_Data\appointments.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -178,9 +180,9 @@
       <Project>{4687488b-2ba7-4117-940b-cb6590b4f680}</Project>
       <Name>CaliCare.Resources</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Components\CaliCare.Scheduling\CaliCare.Scheduling.csproj">
+    <ProjectReference Include="..\..\Components\CaliCare.Scheduling\CaliCare.Schedule.csproj">
       <Project>{7f420f1a-2dab-43e7-97ed-8a002a6705d8}</Project>
-      <Name>CaliCare.Scheduling</Name>
+      <Name>CaliCare.Schedule</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\CaliCare.Infrastructure\CaliCare.Infrastructure.csproj">
       <Project>{5334f0da-4c81-4472-9ddf-dda6f72fce9c}</Project>
@@ -202,9 +204,9 @@
       <Project>{47452dc9-c9e6-455c-9229-1f9c2c575148}</Project>
       <Name>CaliCare.Resources.Adapters</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CaliCare.Scheduling.Adapters\CaliCare.Scheduling.Adapters.csproj">
+    <ProjectReference Include="..\CaliCare.Scheduling.Adapters\CaliCare.Schedule.Adapters.csproj">
       <Project>{d433b1f9-73c9-4826-8267-01b98441ad8b}</Project>
-      <Name>CaliCare.Scheduling.Adapters</Name>
+      <Name>CaliCare.Schedule.Adapters</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

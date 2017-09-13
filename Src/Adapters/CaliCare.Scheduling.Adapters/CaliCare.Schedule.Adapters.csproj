@@ -7,8 +7,8 @@
     <ProjectGuid>{D433B1F9-73C9-4826-8267-01B98441AD8B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CaliCare.Scheduling.Adapters</RootNamespace>
-    <AssemblyName>CaliCare.Scheduling.Adapters</AssemblyName>
+    <RootNamespace>CaliCare.Schedule.Adapters</RootNamespace>
+    <AssemblyName>CaliCare.Schedule.Adapters</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,12 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AppointmentRepository.cs" />
     <Compile Include="Repositories\ClinicalActivityRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Components\CaliCare.Scheduling\CaliCare.Scheduling.csproj">
+    <ProjectReference Include="..\..\Components\CaliCare.Scheduling\CaliCare.Schedule.csproj">
       <Project>{7f420f1a-2dab-43e7-97ed-8a002a6705d8}</Project>
-      <Name>CaliCare.Scheduling</Name>
+      <Name>CaliCare.Schedule</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\CaliCare.Infrastructure\CaliCare.Infrastructure.csproj">
       <Project>{5334F0DA-4C81-4472-9DDF-DDA6F72FCE9C}</Project>

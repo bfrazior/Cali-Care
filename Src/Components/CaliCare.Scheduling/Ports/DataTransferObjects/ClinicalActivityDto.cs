@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CaliCare.Scheduling.Ports.DataTransferObjects
+namespace CaliCare.Schedule.Ports.DataTransferObjects
 {
    public class ClinicalActivityDto
    {

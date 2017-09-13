@@ -1,9 +1,10 @@
 ﻿using CaliCare.Infrastructure.Interfaces;
-using CaliCare.Scheduling.Domain;
+using CaliCare.Schedule.Domain;
 
-namespace CaliCare.Scheduling.Ports.Repositories
+namespace CaliCare.Schedule.Ports.Repositories
 {
    public interface IClinicalActivityRepository : IRepository<ClinicalActivity>
    {
+      ClinicalActivity Find(string code);
    }
 }

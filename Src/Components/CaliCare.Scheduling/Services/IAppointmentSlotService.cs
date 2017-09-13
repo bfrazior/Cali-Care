@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CaliCare.Scheduling.Services
+namespace CaliCare.Schedule.Services
 {
    public interface IAppointmentSlotService
    {

@@ -3,7 +3,7 @@
 using CaliCare.Infrastructure.Extensions;
 using CaliCare.Resources.Application.Commands;
 using CaliCare.Conditions.Application.Commands;
-using CaliCare.Scheduling.Application.Commands;
+using CaliCare.Schedule.Application.Commands;
 
 namespace CaliCare.WebApi.Adapters.App_Start
 {

@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliCare.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliCare.Conditions", "Src\Components\CaliCare.Conditions\CaliCare.Conditions.csproj", "{D410A1BB-D242-4DD9-9560-4633C1AC4FC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliCare.Scheduling", "Src\Components\CaliCare.Scheduling\CaliCare.Scheduling.csproj", "{7F420F1A-2DAB-43E7-97ED-8A002A6705D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliCare.Schedule", "Src\Components\CaliCare.Scheduling\CaliCare.Schedule.csproj", "{7F420F1A-2DAB-43E7-97ED-8A002A6705D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliCare.Registration", "Src\Components\CaliCare.Registration\CaliCare.Registration.csproj", "{2A092805-2A5D-4E04-99A4-AA8679A37D52}"
 EndProject
@@ -43,7 +43,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliCare.ConsoleApplication
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliCare.Registration.Adapters", "Src\Adapters\CaliCare.Registration.Adapters\CaliCare.Registration.Adapters.csproj", "{DA982B5B-FCD2-4AF2-8978-0FDEAA475699}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliCare.Scheduling.Adapters", "Src\Adapters\CaliCare.Scheduling.Adapters\CaliCare.Scheduling.Adapters.csproj", "{D433B1F9-73C9-4826-8267-01B98441AD8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaliCare.Schedule.Adapters", "Src\Adapters\CaliCare.Scheduling.Adapters\CaliCare.Schedule.Adapters.csproj", "{D433B1F9-73C9-4826-8267-01B98441AD8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,8 +7,8 @@
     <ProjectGuid>{7F420F1A-2DAB-43E7-97ED-8A002A6705D8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CaliCare.Scheduling</RootNamespace>
-    <AssemblyName>CaliCare.Scheduling</AssemblyName>
+    <RootNamespace>CaliCare.Schedule</RootNamespace>
+    <AssemblyName>CaliCare.Schedule</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,15 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Commands\Handlers\ScheduleAppointmentCommandHandler.cs" />
+    <Compile Include="Application\Commands\Handlers\CreateAppointmentCommandHandler.cs" />
     <Compile Include="Application\Commands\Handlers\SeedClinicalActivitiesCommandHandler.cs" />
-    <Compile Include="Application\Commands\ScheduleAppointmentCommand.cs" />
+    <Compile Include="Application\Commands\CreateAppointmentCommand.cs" />
     <Compile Include="Application\Commands\SeedClinicalActivitiesCommand.cs" />
-    <Compile Include="Application\SchedulingConverter.cs" />
+    <Compile Include="Application\Queries\GetAppointmentsByClinicalActivityCodeQuery.cs" />
+    <Compile Include="Application\Queries\GetClinicalActivityByCodeQuery.cs" />
+    <Compile Include="Application\Queries\Handlers\GetAppointmentsByClinicalActivityCodeQueryHandler.cs" />
+    <Compile Include="Application\Queries\Handlers\GetClinicalActivityByCodeQueryHandler.cs" />
+    <Compile Include="Application\ScheduleConverter.cs" />
     <Compile Include="Common\AppointmentStatus.cs" />
     <Compile Include="Domain\Appointment.cs" />
+    <Compile Include="Domain\AppointmentSlot.cs" />
+    <Compile Include="Domain\AppointmentStaff.cs" />
     <Compile Include="Domain\ClinicalActivity.cs" />
+    <Compile Include="Ports\DataTransferObjects\AppointmentDto.cs" />
     <Compile Include="Ports\DataTransferObjects\ClinicalActivityDto.cs" />
+    <Compile Include="Ports\Repositories\IAppointmentRepository.cs" />
     <Compile Include="Ports\Repositories\IClinicalActivityRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IAppointmentSlotService.cs" />

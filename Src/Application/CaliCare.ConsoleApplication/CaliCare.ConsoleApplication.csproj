@@ -76,11 +76,14 @@
     <Compile Include="Views\PhysicianListView.cs" />
     <Compile Include="Views\RegisterPatientView.cs" />
     <Compile Include="Views\ResourcesSubMenuView.cs" />
+    <Compile Include="Views\ScheduleSubMenuView.cs" />
+    <Compile Include="Views\ConsultApptsSummaryListView.cs" />
     <Compile Include="WebApi\CaliCareHttpClient.cs" />
     <Compile Include="WebApi\ConditionsApi.cs" />
     <Compile Include="WebApi\PatientsApi.cs" />
     <Compile Include="WebApi\RegistrationsApi.cs" />
     <Compile Include="WebApi\ResourcesApi.cs" />
+    <Compile Include="WebApi\ScheduleApi.cs" />
     <Compile Include="WebApi\WebApiUtility.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +102,10 @@
     <ProjectReference Include="..\..\Components\CaliCare.Resources\CaliCare.Resources.csproj">
       <Project>{4687488b-2ba7-4117-940b-cb6590b4f680}</Project>
       <Name>CaliCare.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Components\CaliCare.Scheduling\CaliCare.Schedule.csproj">
+      <Project>{7f420f1a-2dab-43e7-97ed-8a002a6705d8}</Project>
+      <Name>CaliCare.Schedule</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

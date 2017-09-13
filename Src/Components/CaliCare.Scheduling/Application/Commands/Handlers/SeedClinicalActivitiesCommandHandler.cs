@@ -1,8 +1,8 @@
 ﻿using CaliCare.Infrastructure.Interfaces;
-using CaliCare.Scheduling.Ports.Repositories;
-using CaliCare.Scheduling.Domain;
+using CaliCare.Schedule.Ports.Repositories;
+using CaliCare.Schedule.Domain;
 
-namespace CaliCare.Scheduling.Application.Commands.Handlers
+namespace CaliCare.Schedule.Application.Commands.Handlers
 {
    public class SeedClinicalActivitiesCommandHandler : ICommandHandler<SeedClinicalActivitiesCommand>
    {
