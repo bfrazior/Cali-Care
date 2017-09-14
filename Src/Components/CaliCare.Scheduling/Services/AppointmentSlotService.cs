@@ -27,8 +27,7 @@ namespace CaliCare.Schedule.Services
          Guid[] roomSearch,
          int slotsToFill)
       {
-         var scheduleDaySlots = _mediator.SendSync(new GetScheduleDayQuery() { Date = searchStartDate.Date })
-            .Slots
+         var scheduleDaySlots = _mediator.SendSync(new GetScheduleSlotsByDayQuery() { Date = searchStartDate.Date })
             .Select(x => ScheduleConverter.ConvertToDomain(x))
             .ToArray();
 

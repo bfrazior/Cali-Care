@@ -14,7 +14,6 @@ namespace CaliCare.Schedule.Domain
       public Guid PatientId { get; }
       public Guid RoomId { get; }
 
-      public ScheduleSlot[] Slots { get; private set; }
       public AppointmentStaff Staff { get; private set; }
       public AppointmentStatus Status { get; private set; }
 
@@ -25,7 +24,6 @@ namespace CaliCare.Schedule.Domain
          Guid? patientConditionId,
          Guid roomId,
          AppointmentStaff staff,
-         ScheduleSlot[] slots,
          AppointmentStatus status)
       {
          Id = id;
@@ -34,7 +32,6 @@ namespace CaliCare.Schedule.Domain
          PatientConditionId = patientConditionId;
          RoomId = roomId;
          Staff = staff;
-         Slots = slots;
          Status = status;
       }
 
@@ -43,8 +40,7 @@ namespace CaliCare.Schedule.Domain
          Guid patientId,
          Guid? patientConditionId,
          Guid roomId,
-         AppointmentStaff staff,
-         ScheduleSlot[] slots)
+         AppointmentStaff staff)
       {
          if (clinicalActivityId == Guid.Empty)
             throw new ArgumentException($"{nameof(clinicalActivityId)} cannot be empty.");
@@ -58,21 +54,7 @@ namespace CaliCare.Schedule.Domain
          if (staff == null)
             throw new ArgumentException($"{nameof(staff)} cannot be undefined.");
 
-         if (slots == null || slots.Count() == 0)
-            throw new ArgumentException($"{nameof(slots)} cannot be empty or undefined.");
-
-         var appointmentId = Guid.NewGuid();
-         slots.ToList().ForEach(x => x.AddAppointment(appointmentId));
-
-         return new Appointment(appointmentId, clinicalActivityId, patientId, patientConditionId, roomId, staff, slots, AppointmentStatus.Pending);
-      }
-
-      public void SetSlot(ScheduleSlot[] slots)
-      {
-         if (slots == null || slots.Count() == 0)
-            throw new ArgumentException($"{nameof(slots)} cannot be empty or undefined.");
-
-         Slots = slots;
+         return new Appointment(Guid.NewGuid(), clinicalActivityId, patientId, patientConditionId, roomId, staff, AppointmentStatus.Pending);
       }
 
       public void SetStatus(AppointmentStatus status)

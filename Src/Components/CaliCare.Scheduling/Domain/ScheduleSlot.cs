@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
 
+using CaliCare.Infrastructure.Interfaces;
+
 namespace CaliCare.Schedule.Domain
 {
-   public class ScheduleSlot
+   public class ScheduleSlot : IAggregateRoot
    {
       public Guid Id { get; }
       public DateTime Date { get; }

@@ -2,23 +2,28 @@
 using System.Linq;
 
 using CaliCare.Infrastructure.Interfaces;
+using CaliCare.Infrastructure.Extensions;
 using CaliCare.Schedule.Ports.Repositories;
 using CaliCare.Schedule.Domain;
 using CaliCare.Schedule.Services;
+using MediatR;
 
 namespace CaliCare.Schedule.Application.Commands.Handlers
 {
    public class CreateAppointmentCommandHandler : ICommandHandler<CreateAppointmentCommand>
    {
       private readonly IAppointmentRepository _appointmentRepository;
+      private readonly IMediator _mediator;
       private readonly IAppointmentSlotService _slotService;
 
       public CreateAppointmentCommandHandler(
          IAppointmentSlotService slotService,
-         IAppointmentRepository appointmentRepository)
+         IAppointmentRepository appointmentRepository,
+         IMediator mediator)
       {
          _slotService = slotService;
          _appointmentRepository = appointmentRepository;
+         _mediator = mediator;
       }
 
       public void Handle(CreateAppointmentCommand message)
@@ -50,10 +55,16 @@ namespace CaliCare.Schedule.Application.Commands.Handlers
             message.PatientId,
             message.PatientConditionId,
             slotResult.Item2, 
-            slotResult.Item3,
-            slotResult.Item1);
+            slotResult.Item3);
 
          _appointmentRepository.Store(appointment);
+
+         var fillSlots = slotResult.Item1.ToList();
+         fillSlots.ForEach(x =>
+         {
+            x.AddAppointment(appointment.Id);
+            _mediator.SendSync(new StoreScheduleSlotCommand() { Slot = ScheduleConverter.ConvertToDto(x) });
+         });
       }
    }
 }

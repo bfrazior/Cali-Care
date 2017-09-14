@@ -50,7 +50,7 @@ namespace CaliCare.WebApi.Adapters.App_Start
 
       private static void ScheduleRegistrations(Container container)
       {
-         container.Register<IScheduleRepository, ScheduleRepository>();
+         container.Register<IScheduleSlotRepository, ScheduleSlotRepository>();
          container.Register<IAppointmentRepository, AppointmentRepository>();
          container.Register<IClinicalActivityRepository, ClinicalActivityRepository>();
          container.Register<IAppointmentSlotService, AppointmentSlotService>();

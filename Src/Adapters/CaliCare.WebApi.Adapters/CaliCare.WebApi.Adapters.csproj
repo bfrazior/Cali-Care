@@ -155,7 +155,7 @@
     </Content>
     <Content Include="App_Data\clinicalActivities.json" />
     <Content Include="App_Data\appointments.json" />
-    <Content Include="App_Data\scheduleDays.json" />
+    <Content Include="App_Data\scheduleSlots.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

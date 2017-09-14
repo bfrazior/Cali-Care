@@ -21,7 +21,10 @@ namespace CaliCare.Resources.Adapters.Repositories
             .SingleOrDefault();
 
       public IReadOnlyList<Department> FindAll()
-         => JsonConvert.DeserializeObject<Department[]>(File.ReadAllText(_jsonPath)).ToList();
+      {
+         try { return JsonConvert.DeserializeObject<Department[]>(File.ReadAllText(_jsonPath)).ToList(); }
+         catch { return new List<Department>(); }
+      }
 
       public void Store(Department[] aggregates)
          => File.WriteAllText(_jsonPath, JsonConvert.SerializeObject(aggregates));

@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-using CaliCare.Schedule.Domain;
+﻿using CaliCare.Schedule.Domain;
 using CaliCare.Schedule.Ports.DataTransferObjects;
 
 namespace CaliCare.Schedule.Application
@@ -27,7 +25,6 @@ namespace CaliCare.Schedule.Application
             PatientId = appointment.PatientId,
             PatientConditionId = appointment.PatientConditionId,
             RoomId = appointment.RoomId,
-            Slots = appointment.Slots.Select(x => ConvertToDto(x)).ToArray(),
             Staff = ConvertToDto(appointment.Staff),
             Status = appointment.Status
          };
@@ -45,14 +42,6 @@ namespace CaliCare.Schedule.Application
             Code = activity.Code,
             Id = activity.Id,
             Name = activity.Name
-         };
-
-      public static ScheduleDayDto ConvertToDto(ScheduleDay scheduleDay)
-         => scheduleDay == null ? null : new ScheduleDayDto()
-         {
-            Date = scheduleDay.Date,
-            Id = scheduleDay.Id,
-            Slots = scheduleDay.Slots.Select(x => ConvertToDto(x)).ToArray()
          };
 
       public static ScheduleSlotDto ConvertToDto(ScheduleSlot slot)
