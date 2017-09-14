@@ -59,8 +59,8 @@ namespace CaliCare.Schedule.Services
                continue;
 
             var availSlots = new List<ScheduleSlot>();
-            for (var availSlotNumber = slotNumber; availSlotNumber > slotNumber - slotsToFill; availSlotNumber--)
-               availSlots.Add(scheduleDaySlots[slotNumber]);
+            for (var fillSlot = slotNumber; fillSlot < slotNumber + slotsToFill; fillSlot++)
+               availSlots.Add(scheduleDaySlots[fillSlot]);
 
             return new Tuple<ScheduleSlot[], Guid, AppointmentStaff>(availSlots.ToArray(), availRoom.Value, availStaff);
          }
