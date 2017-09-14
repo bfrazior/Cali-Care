@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 
 using CaliCare.Conditions.Domain;
-using CaliCare.Conditions.Common;
 using CaliCare.Infrastructure.Interfaces;
 
 namespace CaliCare.Conditions.Ports.Repositories
@@ -11,7 +10,7 @@ namespace CaliCare.Conditions.Ports.Repositories
    {
       PatientCondition Find(Guid id);
 
-      IReadOnlyList<PatientCondition> FindAll(ConditionClassification classification);
+      IReadOnlyList<PatientCondition> FindAllByPatientId(Guid patientId);
 
       void Store(PatientCondition condition);
    }

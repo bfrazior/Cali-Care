@@ -6,11 +6,11 @@ namespace CaliCare.ConsoleApplication.WebApi
 {
    public static class ScheduleApi
    {
-      public static void CreateAppointment(AppointmentDto appointment)
+      public static void CreateAppointment(CreateAppointmentDto createAppointmentDto)
       {
          using (var client = new CaliCareHttpClient())
          {
-            var byteContent = WebApiUtility.CreatePostContent(appointment);
+            var byteContent = WebApiUtility.CreatePostContent(createAppointmentDto);
             var response = client.PostAsync("api/schedule/appointments/create", byteContent).Result;
          }
       }

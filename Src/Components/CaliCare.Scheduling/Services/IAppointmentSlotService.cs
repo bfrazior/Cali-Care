@@ -1,9 +1,16 @@
 ﻿using System;
 
+using CaliCare.Schedule.Domain;
+
 namespace CaliCare.Schedule.Services
 {
    public interface IAppointmentSlotService
    {
-      void GetNextOpenAppointmentSlot(DateTime fromDateTime, Guid staffId);
+      Tuple<ScheduleSlot[], Guid, AppointmentStaff> GetNextAvailableAppointmentSlots(
+         DateTime searchStartDate, 
+         int searchStartSlot, 
+         AppointmentStaff[] staffSearch, 
+         Guid[] roomSearch, 
+         int slotsToFill);
    }
 }

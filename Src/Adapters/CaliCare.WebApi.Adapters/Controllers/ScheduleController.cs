@@ -21,14 +21,18 @@ namespace CaliCare.WebApi.Adapters.Controllers
       }
 
       [Route("appointments/create")]
-      public void CreateAppointment([FromBody]AppointmentDto appointment)
+      public void CreateAppointment([FromBody]CreateAppointmentDto createAppointmentDto)
       {
          _mediator.SendSync(new CreateAppointmentCommand()
          {
-            ClinicalActivityId = appointment.ClinicalActivityId,
-            PatientId = appointment.PatientId,
-            Slot = appointment.Slot,
-            Staff = appointment.Staff
+            ClinicalActivityId = createAppointmentDto.ClinicalActivityId,
+            Date = createAppointmentDto.Date,
+            NumberOfSlots = createAppointmentDto.NumberOfSlots,
+            PatientConditionId = createAppointmentDto.PatientConditionId,
+            PatientId = createAppointmentDto.PatientId,
+            RoomChoices = createAppointmentDto.RoomChoices,
+            StaffChoices = createAppointmentDto.StaffChoices,
+            StartSlot = createAppointmentDto.StartSlot
          });
       }
 

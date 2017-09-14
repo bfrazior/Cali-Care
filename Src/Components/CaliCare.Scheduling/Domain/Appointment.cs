@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 using CaliCare.Infrastructure.Interfaces;
 using CaliCare.Schedule.Common;
@@ -9,9 +10,11 @@ namespace CaliCare.Schedule.Domain
    {
       public Guid Id { get; }
       public Guid ClinicalActivityId { get; }
+      public Guid? PatientConditionId { get; }
       public Guid PatientId { get; }
+      public Guid RoomId { get; }
 
-      public AppointmentSlot Slot { get; private set; }
+      public ScheduleSlot[] Slots { get; private set; }
       public AppointmentStaff Staff { get; private set; }
       public AppointmentStatus Status { get; private set; }
 
@@ -19,23 +22,29 @@ namespace CaliCare.Schedule.Domain
          Guid id,
          Guid clinicalActivityId,
          Guid patientId,
+         Guid? patientConditionId,
+         Guid roomId,
          AppointmentStaff staff,
-         AppointmentSlot slot,
+         ScheduleSlot[] slots,
          AppointmentStatus status)
       {
          Id = id;
          ClinicalActivityId = clinicalActivityId;
          PatientId = patientId;
+         PatientConditionId = patientConditionId;
+         RoomId = roomId;
          Staff = staff;
-         Slot = slot;
+         Slots = slots;
          Status = status;
       }
 
       public static Appointment Create(
          Guid clinicalActivityId, 
-         Guid patientId, 
+         Guid patientId,
+         Guid? patientConditionId,
+         Guid roomId,
          AppointmentStaff staff,
-         AppointmentSlot slot)
+         ScheduleSlot[] slots)
       {
          if (clinicalActivityId == Guid.Empty)
             throw new ArgumentException($"{nameof(clinicalActivityId)} cannot be empty.");
@@ -43,21 +52,27 @@ namespace CaliCare.Schedule.Domain
          if (patientId == Guid.Empty)
             throw new ArgumentException($"{nameof(patientId)} cannot be empty.");
 
+         if (roomId == Guid.Empty)
+            throw new ArgumentException($"{nameof(roomId)} cannot be empty.");
+
          if (staff == null)
             throw new ArgumentException($"{nameof(staff)} cannot be undefined.");
 
-         if (slot == null)
-            throw new ArgumentException($"{nameof(slot)} cannot be undefined.");
+         if (slots == null || slots.Count() == 0)
+            throw new ArgumentException($"{nameof(slots)} cannot be empty or undefined.");
 
-         return new Appointment(Guid.NewGuid(), clinicalActivityId, patientId, staff, slot, AppointmentStatus.Pending);
+         var appointmentId = Guid.NewGuid();
+         slots.ToList().ForEach(x => x.AddAppointment(appointmentId));
+
+         return new Appointment(appointmentId, clinicalActivityId, patientId, patientConditionId, roomId, staff, slots, AppointmentStatus.Pending);
       }
 
-      public void SetSlot(AppointmentSlot slot)
+      public void SetSlot(ScheduleSlot[] slots)
       {
-         if (slot == null)
-            throw new ArgumentException($"{nameof(slot)} cannot be undefined.");
+         if (slots == null || slots.Count() == 0)
+            throw new ArgumentException($"{nameof(slots)} cannot be empty or undefined.");
 
-         Slot = slot;
+         Slots = slots;
       }
 
       public void SetStatus(AppointmentStatus status)

@@ -50,11 +50,13 @@
     <Compile Include="Application\Commands\StoreConditionCommand.cs" />
     <Compile Include="Application\ConditionConverter.cs" />
     <Compile Include="Application\Queries\CreateConditionQuery.cs" />
+    <Compile Include="Application\Queries\GetConditionsByPatientIdQuery.cs" />
     <Compile Include="Application\Queries\GetConditionsQuery.cs" />
     <Compile Include="Application\Queries\GetConditionQuery.cs" />
     <Compile Include="Application\Queries\GetTopographyQuery.cs" />
     <Compile Include="Application\Queries\Handlers\CreateConditionQueryHandler.cs" />
     <Compile Include="Application\Queries\Handlers\GetConditionQueryHandler.cs" />
+    <Compile Include="Application\Queries\Handlers\GetConditionsByPatientIdQueryHandler.cs" />
     <Compile Include="Application\Queries\Handlers\GetConditionsQueryHandler.cs" />
     <Compile Include="Application\Queries\GetTopographiesQuery.cs" />
     <Compile Include="Application\Queries\Handlers\GetTopographiesQueryHandler.cs" />

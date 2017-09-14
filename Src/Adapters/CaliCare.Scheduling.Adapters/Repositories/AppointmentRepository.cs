@@ -15,6 +15,9 @@ namespace CaliCare.Schedule.Adapters.Repositories
    {
       private readonly string _jsonPath = Path.Combine(AppDomainUtility.GetAppDomainPath(), "appointments.json");
 
+      public Appointment Find(Guid id)
+         => FindAll().Where(x => x.Id == id).SingleOrDefault();
+
       public IReadOnlyList<Appointment> FindAll()
       {
          try { return JsonConvert.DeserializeObject<Appointment[]>(File.ReadAllText(_jsonPath)).ToList(); }

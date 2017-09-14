@@ -168,16 +168,23 @@ namespace CaliCare.ConsoleApplication.Views
          var physician = ResourcesApi.GetAllPysicians().First();
          var clinicalActivity = ScheduleApi.GetClinicalActivityByCode("54321");
 
-         var appointment = new AppointmentDto()
+         var createAppointmentDto = new CreateAppointmentDto()
          {
             ClinicalActivityId = clinicalActivity.Id,
-            Id = Guid.Empty,
+            Date = DateTime.Now.AddDays(1),
+            NumberOfSlots = 32,
             PatientId = patientId,
-            Slot = new AppointmentSlotDto() { LengthInMins = 30, RoomId = room.Id, StartAt = DateTime.Now },
-            Staff = new AppointmentStaffDto() { AppointmentStaffId = physician.Id, AppointmentStaffType = nameof(Physician) },
-            Status = AppointmentStatus.Pending
+            RoomChoices = new Guid[] { room.Id },
+            StaffChoices = new AppointmentStaffDto[] { new AppointmentStaffDto() { AppointmentStaffId = physician.Id, AppointmentStaffType = nameof(Physician) } },
+            StartSlot = 0 
+
+            //ClinicalActivityId = clinicalActivity.Id,
+            //Id = Guid.Empty,
+            //PatientId = patientId,
+            //Staff = new AppointmentStaffDto() { AppointmentStaffId = physician.Id, AppointmentStaffType = nameof(Physician) },
+            //Status = AppointmentStatus.Pending
          };
-         ScheduleApi.CreateAppointment(appointment);
+         ScheduleApi.CreateAppointment(createAppointmentDto);
       }
 
       private static PatientConditionDto EmptyNonCancerPatientCondition(ConditionType type)

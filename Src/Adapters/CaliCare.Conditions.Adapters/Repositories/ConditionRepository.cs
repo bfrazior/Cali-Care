@@ -5,7 +5,6 @@ using System.IO;
 
 using Newtonsoft.Json;
 
-using CaliCare.Conditions.Common;
 using CaliCare.Conditions.Domain;
 using CaliCare.Conditions.Ports.Repositories;
 using CaliCare.Infrastructure.Utilities;
@@ -27,9 +26,9 @@ namespace CaliCare.Conditions.Adapters.Repositories
          catch { return new List<PatientCondition>(); }
       }
 
-      public IReadOnlyList<PatientCondition> FindAll(ConditionClassification classification)
+      public IReadOnlyList<PatientCondition> FindAllByPatientId(Guid patientId)
          => FindAll()
-            .Where(x => x.Classification == classification)
+            .Where(x => x.PatientId == patientId)
             .ToList();
 
       public void Store(PatientCondition condition)

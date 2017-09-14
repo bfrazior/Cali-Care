@@ -1,20 +1,23 @@
-﻿using CaliCare.Schedule.Domain;
+﻿using System.Linq;
+
+using CaliCare.Schedule.Domain;
 using CaliCare.Schedule.Ports.DataTransferObjects;
 
 namespace CaliCare.Schedule.Application
 {
    internal static class ScheduleConverter
    {
-      public static AppointmentSlot ConvertToDomain(AppointmentSlotDto slotDto)
-         => slotDto == null ? null : new AppointmentSlot(
-            slotDto.RoomId,
-            slotDto.StartAt,
-            slotDto.LengthInMins);
-
       public static AppointmentStaff ConvertToDomain(AppointmentStaffDto staffDto)
          => staffDto == null ? null : new AppointmentStaff(
             staffDto.AppointmentStaffId, 
             staffDto.AppointmentStaffType);
+
+      public static ScheduleSlot ConvertToDomain(ScheduleSlotDto slotDto)
+         => slotDto == null ? null : new ScheduleSlot(
+            slotDto.Id,
+            slotDto.Date, 
+            slotDto.SlotNumber, 
+            slotDto.Appointments);
 
       public static AppointmentDto ConvertToDto(Appointment appointment)
          => appointment == null ? null : new AppointmentDto()
@@ -22,17 +25,11 @@ namespace CaliCare.Schedule.Application
             ClinicalActivityId = appointment.ClinicalActivityId,
             Id = appointment.Id,
             PatientId = appointment.PatientId,
-            Slot = ConvertToDto(appointment.Slot),
+            PatientConditionId = appointment.PatientConditionId,
+            RoomId = appointment.RoomId,
+            Slots = appointment.Slots.Select(x => ConvertToDto(x)).ToArray(),
             Staff = ConvertToDto(appointment.Staff),
             Status = appointment.Status
-         };
-
-      public static AppointmentSlotDto ConvertToDto(AppointmentSlot slot)
-         => slot == null ? null : new AppointmentSlotDto()
-         {
-            LengthInMins = slot.LengthInMins,
-            RoomId = slot.RoomId,
-            StartAt = slot.StartAt
          };
 
       public static AppointmentStaffDto ConvertToDto(AppointmentStaff staff)
@@ -49,5 +46,23 @@ namespace CaliCare.Schedule.Application
             Id = activity.Id,
             Name = activity.Name
          };
+
+      public static ScheduleDayDto ConvertToDto(ScheduleDay scheduleDay)
+         => scheduleDay == null ? null : new ScheduleDayDto()
+         {
+            Date = scheduleDay.Date,
+            Id = scheduleDay.Id,
+            Slots = scheduleDay.Slots.Select(x => ConvertToDto(x)).ToArray()
+         };
+
+      public static ScheduleSlotDto ConvertToDto(ScheduleSlot slot)
+         => slot == null ? null : new ScheduleSlotDto()
+         {
+            Id = slot.Id,
+            Date = slot.Date,
+            Appointments = slot.Appointments,
+            SlotNumber = slot.SlotNumber
+         };
+
    }
 }

@@ -10,6 +10,8 @@ namespace CaliCare.Schedule.Ports.Repositories
    {
       void Store(Appointment appointment);
 
+      Appointment Find(Guid id);
+
       IReadOnlyList<Appointment> FindAllByClinicalActivityId(Guid clinicalActivityId);
    }
 }

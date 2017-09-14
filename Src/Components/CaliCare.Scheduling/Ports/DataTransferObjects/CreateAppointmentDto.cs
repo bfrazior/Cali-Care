@@ -1,11 +1,8 @@
 ﻿using System;
 
-using CaliCare.Infrastructure.Interfaces;
-using CaliCare.Schedule.Ports.DataTransferObjects;
-
-namespace CaliCare.Schedule.Application.Commands
+namespace CaliCare.Schedule.Ports.DataTransferObjects
 {
-   public class CreateAppointmentCommand : ICommand
+   public class CreateAppointmentDto
    {
       public Guid ClinicalActivityId { get; set; }
       public DateTime Date { get; set; }
