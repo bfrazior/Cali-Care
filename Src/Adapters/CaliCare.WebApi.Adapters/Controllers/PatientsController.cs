@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 
 using MediatR;
@@ -23,6 +24,12 @@ namespace CaliCare.WebApi.Adapters.Controllers
       public IEnumerable<PatientDto> GetPatients()
       {
          return _mediator.SendSync(new GetPatientsQuery());
+      }
+
+      [Route("{id:Guid}")]
+      public PatientDto GetPatient(Guid id)
+      {
+         return _mediator.SendSync(new GetPatientQuery() { Id = id });
       }
 
       [Route("create")]

@@ -2,7 +2,9 @@
 using System.Linq;
 
 using ConsoleTables;
+
 using CaliCare.ConsoleApplication.WebApi;
+using CaliCare.Resources.Ports.DataTransferObjects;
 
 namespace CaliCare.ConsoleApplication.Views
 {
@@ -20,10 +22,19 @@ namespace CaliCare.ConsoleApplication.Views
          {
             var start = consult.Slots.Min(x => x.SlotNumber);
             var end = consult.Slots.Max(x => x.SlotNumber);
-            table.AddRow(consult.Slots[0].Date, start, end, consult.RoomId, consult.PatientId, consult.Staff.AppointmentStaffId);
-         }
-         table.Write();
 
+            var patient = PatientsApi.GetPatient(consult.PatientId);
+            var patientName = $"{patient.Name.LastName}, {patient.Name.FirstName} {patient.Name.MiddleName}";
+
+            var physician = ResourcesApi.GetPhysician(consult.Staff);
+            var physicianName = $"{physician.Name.LastName}, {physician.Name.FirstName} {physician.Name.MiddleName}";
+
+            var room = ResourcesApi.GetRoom(consult.RoomId);
+
+            table.AddRow(consult.Slots[0].Date.ToShortDateString(), start, end, room.Name, patientName, physicianName);
+         }
+
+         table.Write();
       }
    }
 }

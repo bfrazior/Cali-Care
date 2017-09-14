@@ -56,13 +56,17 @@
     <Compile Include="Application\Commands\StorePhysicianCommand.cs" />
     <Compile Include="Application\Queries\GetDepartmentByNameQuery.cs" />
     <Compile Include="Application\Queries\GetMachineByRoomIdQuery.cs" />
+    <Compile Include="Application\Queries\GetPhysicianQuery.cs" />
+    <Compile Include="Application\Queries\GetPhysicianQueryHandler.cs" />
     <Compile Include="Application\Queries\GetPhysiciansQuery.cs" />
+    <Compile Include="Application\Queries\GetRoomQuery.cs" />
     <Compile Include="Application\Queries\GetRoomsQuery.cs" />
     <Compile Include="Application\Queries\Handlers\GetDepartmentQueryHandler.cs" />
     <Compile Include="Application\Queries\GetDepartmentsQuery.cs" />
     <Compile Include="Application\Queries\Handlers\GetDepartmentsQueryHandler.cs" />
     <Compile Include="Application\Queries\Handlers\GetMachineByRoomIdQueryHandler.cs" />
     <Compile Include="Application\Queries\Handlers\GetPhysiciansQueryHandler.cs" />
+    <Compile Include="Application\Queries\Handlers\GetRoomQueryHandler.cs" />
     <Compile Include="Application\Queries\Handlers\GetRoomsQueryHandler.cs" />
     <Compile Include="Application\ResourceConverter.cs" />
     <Compile Include="Application\Queries\GetMachinesQuery.cs" />

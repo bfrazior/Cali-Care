@@ -15,6 +15,9 @@ namespace CaliCare.Schedule.Application.Commands.Handlers
 
       public void Handle(SeedClinicalActivitiesCommand message)
       {
+         if (_clinicalActivityRepository.FindAll().Count > 0)
+            return;
+
          var clinicalActvities = new ClinicalActivity[]
          {
             ClinicalActivity.Create("con", "54321", "New Patient Consult")

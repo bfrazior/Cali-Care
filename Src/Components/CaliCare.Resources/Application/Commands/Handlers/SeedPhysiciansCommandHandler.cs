@@ -16,6 +16,9 @@ namespace CaliCare.Resources.Application.Commands.Handlers
 
       public void Handle(SeedPhysiciansCommand message)
       {
+         if (_physicianRepository.FindAll().Count > 0)
+            return;
+
          var physicians = new Physician[]
          {
             Physician.Create(new PhysicianName("John", "A", "Doe", "john"), new PhysicianRole[] { PhysicianRole.Oncologist }),

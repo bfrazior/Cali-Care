@@ -16,6 +16,9 @@ namespace CaliCare.Conditions.Application.Commands.Handlers
 
       public void Handle(SeedTopographiesCommand message)
       {
+         if (_topographyRepository.FindAll().Count > 0)
+            return;
+
          var topographies = new Topography[]
          {
             Topography.Create("Head & Neck", TopographyClassification.Custom),

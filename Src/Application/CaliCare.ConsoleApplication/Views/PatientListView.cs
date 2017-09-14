@@ -9,7 +9,7 @@ namespace CaliCare.ConsoleApplication.Views
    {
       public static void Show()
       {
-         var patients = PatientsApi.GetAllPatients();
+         var patients = PatientsApi.GetPatients();
 
          var table = new ConsoleTable("Name", "Name Preference");
          foreach (var patient in patients)

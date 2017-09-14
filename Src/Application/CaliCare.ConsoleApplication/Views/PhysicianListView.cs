@@ -10,7 +10,7 @@ namespace CaliCare.ConsoleApplication.Views
    {
       public static void Show()
       {
-         var physicians = ResourcesApi.GetAllPysicians();
+         var physicians = ResourcesApi.GetPhysicians();
 
          var table = new ConsoleTable("Name", "User Name", "Roles");
          foreach (var physician in physicians)

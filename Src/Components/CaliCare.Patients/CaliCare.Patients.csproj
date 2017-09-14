@@ -49,11 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Queries\CreatePatientQuery.cs" />
+    <Compile Include="Application\Queries\GetPatientQuery.cs" />
     <Compile Include="Application\Queries\Handlers\CreatePatientQueryHandler.cs" />
     <Compile Include="Application\Commands\Handlers\StorePatientCommandHandler.cs" />
     <Compile Include="Application\Commands\StorePatientCommand.cs" />
     <Compile Include="Application\PatientConverter.cs" />
     <Compile Include="Application\Queries\GetPatientsQuery.cs" />
+    <Compile Include="Application\Queries\Handlers\GetPatientQueryHandler.cs" />
     <Compile Include="Application\Queries\Handlers\GetPatientsQueryHandler.cs" />
     <Compile Include="Domain\PatientName.cs" />
     <Compile Include="Domain\Patient.cs" />

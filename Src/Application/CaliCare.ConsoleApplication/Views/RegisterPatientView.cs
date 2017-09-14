@@ -165,7 +165,7 @@ namespace CaliCare.ConsoleApplication.Views
          // Test Code - replace with service call to return next available consult appointment.
          var department = ResourcesApi.GetDepartments().First();
          var room = ResourcesApi.GetRooms(department.Id).First();
-         var physician = ResourcesApi.GetAllPysicians().First();
+         var physician = ResourcesApi.GetPhysicians().First();
          var clinicalActivity = ScheduleApi.GetClinicalActivityByCode("54321");
 
          var createAppointmentDto = new CreateAppointmentDto()

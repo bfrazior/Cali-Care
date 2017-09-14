@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,6 +14,9 @@ namespace CaliCare.Patients.Adapters.Repositories
    public class PatientRepository : IPatientRepository
    {
       private readonly string _jsonPath = Path.Combine(AppDomainUtility.GetAppDomainPath(), "patients.json");
+
+      public Patient Find(Guid id)
+         => FindAll().Where(x => x.Id == id).SingleOrDefault();
 
       public IReadOnlyList<Patient> FindAll()
       {

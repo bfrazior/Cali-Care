@@ -15,6 +15,9 @@ namespace CaliCare.Resources.Application.Commands.Handlers
 
       public void Handle(SeedDepartmentsCommand message)
       {
+         if (_departmentRepository.FindAll().Count > 0)
+            return;
+
          var departments = new Department[]
          {
             Department.Create("Los Gatos Radiation Oncology")

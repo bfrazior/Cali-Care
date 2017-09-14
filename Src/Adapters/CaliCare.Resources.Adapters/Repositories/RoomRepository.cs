@@ -15,8 +15,14 @@ namespace CaliCare.Resources.Adapters.Repositories
    {
       private readonly string _jsonPath = Path.Combine(AppDomainUtility.GetAppDomainPath(), "rooms.json");
 
+      public Room Find(Guid id)
+         => FindAll().Where(x => x.Id == id).SingleOrDefault();
+
       public IReadOnlyList<Room> FindAll()
-         => JsonConvert.DeserializeObject<Room[]>(File.ReadAllText(_jsonPath)).ToList();
+      {
+         try { return JsonConvert.DeserializeObject<Room[]>(File.ReadAllText(_jsonPath)).ToList(); }
+         catch { return new List<Room>(); }
+      }
 
       public IReadOnlyList<Room> FindAll(Guid departmentId)
          => FindAll().Where(x => x.DepartmentId == departmentId).ToList();

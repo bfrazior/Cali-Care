@@ -27,6 +27,9 @@ namespace CaliCare.Resources.Application.Commands.Handlers
 
       public void Handle(SeedMachinesCommand message)
       {
+         if (_machineRepository.FindAll().Count > 0)
+            return;
+
          var department = _mediator.SendSync(new GetDepartmentByNameQuery() { Name = "Los Gatos Radiation Oncology" });
          if (department == null)
             throw new InvalidOperationException($"{nameof(GetDepartmentByNameQuery)} failed to return a result.");

@@ -1,6 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+
+using Newtonsoft.Json;
 
 using CaliCare.Patients.Ports.DataTransferObjects;
+using CaliCare.Resources.Ports.DataTransferObjects;
+using CaliCare.Schedule.Ports.DataTransferObjects;
 
 namespace CaliCare.ConsoleApplication.WebApi
 {
@@ -21,7 +25,23 @@ namespace CaliCare.ConsoleApplication.WebApi
          }
       }
 
-      public static PatientDto[] GetAllPatients()
+      public static PatientDto GetPatient(Guid id)
+      {
+         using (var client = new CaliCareHttpClient())
+         {
+            var response = client.GetAsync($"api/patients/{id}").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+               var responseString = response.Content.ReadAsStringAsync().Result;
+               return JsonConvert.DeserializeObject<PatientDto>(responseString);
+            }
+         }
+
+         return null;
+      }
+
+      public static PatientDto[] GetPatients()
       {
          using (var client = new CaliCareHttpClient())
          {

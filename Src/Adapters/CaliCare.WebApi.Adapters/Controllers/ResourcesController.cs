@@ -38,13 +38,26 @@ namespace CaliCare.WebApi.Adapters.Controllers
          return _mediator.SendSync(new GetMachineByRoomIdQuery() { RoomId = roomId });
       }
 
+      [Route("physicians/{id:Guid}")]
+      public PhysicianDto GetPhysician(Guid id)
+      {
+         return _mediator.SendSync(new GetPhysicianQuery() { Id = id });
+      }
+
       [Route("physicians")]
       public IEnumerable<PhysicianDto> GetPhysicians()
       {
          return _mediator.SendSync(new GetPhysiciansQuery());
       }
 
-      [Route("rooms/{departmentId:Guid}")]
+
+      [Route("rooms/{id:Guid}")]
+      public RoomDto GetRoom(Guid id)
+      {
+         return _mediator.SendSync(new GetRoomQuery() { Id = id });
+      }
+
+      [Route("rooms/department/{departmentId:Guid}")]
       public IEnumerable<RoomDto> GetRooms(Guid departmentId)
       {
          return _mediator.SendSync(new GetRoomsQuery() { DepartmentId = departmentId });
