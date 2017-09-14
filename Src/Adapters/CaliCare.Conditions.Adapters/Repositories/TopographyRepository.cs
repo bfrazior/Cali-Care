@@ -20,7 +20,10 @@ namespace CaliCare.Conditions.Adapters.Repositories
          => FindAll().Where(x => x.Id == id).SingleOrDefault();
 
       public IReadOnlyList<Topography> FindAll()
-         => JsonConvert.DeserializeObject<Topography[]>(File.ReadAllText(_jsonPath)).ToList();
+      {
+         try { return JsonConvert.DeserializeObject<Topography[]>(File.ReadAllText(_jsonPath)).ToList(); }
+         catch { return new List<Topography>(); }
+      }
 
       public IReadOnlyList<Topography> FindAll(TopographyClassification classification)
          => FindAll().Where(x => x.Classification == classification).ToList();

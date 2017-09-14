@@ -17,7 +17,10 @@ namespace CaliCare.Resources.Adapters.Repositories
       private readonly string _jsonPath = Path.Combine(AppDomainUtility.GetAppDomainPath(), "machines.json");
 
       public IReadOnlyList<Machine> FindAll()
-         => JsonConvert.DeserializeObject<Machine[]>(File.ReadAllText(_jsonPath)).ToList();
+      {
+         try { return JsonConvert.DeserializeObject<Machine[]>(File.ReadAllText(_jsonPath)).ToList(); }
+         catch { return new List<Machine>(); }
+      }
 
       public IReadOnlyList<Machine> FindAll(MachineCapability capability)
          => FindAll().Where(x => x.Characterization.Capability == capability).ToList();
