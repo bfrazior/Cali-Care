@@ -69,6 +69,7 @@ namespace CaliCare.ConsoleApplication.Views
          ConditionType conditionType;
          do
          {
+            Console.WriteLine();
             Console.Write("Enter a Condition Type [Cancer/Flu]: ");
             var enteredValue = Console.ReadLine().Trim();
 
@@ -85,6 +86,7 @@ namespace CaliCare.ConsoleApplication.Views
          ConditionClassification conditionClassification;
          do
          {
+            Console.WriteLine();
             Console.Write("Enter a Cancer Condition Classification [Primary/Secondary]: ");
             var enteredValue = Console.ReadLine().Trim();
 
@@ -107,6 +109,7 @@ namespace CaliCare.ConsoleApplication.Views
             Console.WriteLine("---------------------------------");
 
             topogs.ForEach(x => Console.WriteLine($"- {x.Code}"));
+            Console.WriteLine();
             Console.Write("Enter a topography code: ");
             var enteredValue = Console.ReadLine().Trim();
 
