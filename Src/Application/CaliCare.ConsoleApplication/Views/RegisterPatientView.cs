@@ -101,7 +101,7 @@ namespace CaliCare.ConsoleApplication.Views
       private static TopographyDto CancerTopographyInput()
       {
          TopographyDto topography;
-         var topogs = ConditionsApi.GetTopographyDtos();
+         var topogs = ConditionsApi.GetTopographies();
          do
          {
             Console.WriteLine();
@@ -135,7 +135,7 @@ namespace CaliCare.ConsoleApplication.Views
 
          if (condition.TopogId.HasValue)
          {
-            var topography = ConditionsApi.GetTopographyDto(condition.TopogId.Value);
+            var topography = ConditionsApi.GetTopography(condition.TopogId.Value);
             Console.WriteLine($"Topography Code: {topography.Code}");
          }
 

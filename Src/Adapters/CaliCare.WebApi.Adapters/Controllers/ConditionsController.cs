@@ -32,6 +32,12 @@ namespace CaliCare.WebApi.Adapters.Controllers
          return _mediator.SendSync(new GetConditionsQuery());
       }
 
+      [Route("{id:Guid}")]
+      public PatientConditionDto GetCondition(Guid id)
+      {
+         return _mediator.SendSync(new GetConditionQuery() { Id = id });
+      }
+
       [Route("topogs")]
       public IEnumerable<TopographyDto> GetTopographies()
       {
