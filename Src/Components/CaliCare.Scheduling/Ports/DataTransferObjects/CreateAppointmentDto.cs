@@ -5,6 +5,7 @@ namespace CaliCare.Schedule.Ports.DataTransferObjects
    public class CreateAppointmentDto
    {
       public Guid ClinicalActivityId { get; set; }
+      public Guid DepartmentId { get; set; }
       public DateTime Date { get; set; }
       public Guid PatientConditionId { get; set; }
       public Guid PatientId { get; set; }

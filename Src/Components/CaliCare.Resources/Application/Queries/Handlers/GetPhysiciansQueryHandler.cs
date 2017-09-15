@@ -17,6 +17,16 @@ namespace CaliCare.Resources.Application.Queries.Handlers
       }
 
       public IReadOnlyList<PhysicianDto> Handle(GetPhysiciansQuery message)
-         => _physicianRepository.FindAll().Select(x => ResourceConverter.ConvertToDto(x)).ToList();
+      {
+         var physicians = _physicianRepository.FindAll().Select(x => ResourceConverter.ConvertToDto(x)).ToList();
+
+         if (message.FilterRoles == null)
+            return physicians;
+
+         foreach(var filter in message.FilterRoles)
+            physicians = physicians.Where(x => x.Roles.Contains(filter)).ToList();
+
+         return physicians;
+      }
    }
 }

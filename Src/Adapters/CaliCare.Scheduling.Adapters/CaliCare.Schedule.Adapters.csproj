@@ -52,11 +52,17 @@
     <Compile Include="Repositories\AppointmentRepository.cs" />
     <Compile Include="Repositories\ClinicalActivityRepository.cs" />
     <Compile Include="Repositories\ScheduleSlotRepository.cs" />
+    <Compile Include="Services\ConsultationService.cs" />
+    <Compile Include="Services\ScheduleResourceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Components\CaliCare.Conditions\CaliCare.Conditions.csproj">
       <Project>{d410a1bb-d242-4dd9-9560-4633c1ac4fc5}</Project>
       <Name>CaliCare.Conditions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Components\CaliCare.Resources\CaliCare.Resources.csproj">
+      <Project>{4687488b-2ba7-4117-940b-cb6590b4f680}</Project>
+      <Name>CaliCare.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Components\CaliCare.Scheduling\CaliCare.Schedule.csproj">
       <Project>{7f420f1a-2dab-43e7-97ed-8a002a6705d8}</Project>

@@ -32,7 +32,7 @@ namespace CaliCare.Schedule.Application.Queries.Handlers
          for (var slotNumber = 0; slotNumber <= 31; slotNumber++)
             defaultSlots.Add(ScheduleSlot.Create(message.Date.Date, slotNumber, null));
 
-         _slotRepository.Store(defaultSlots.ToArray());
+         defaultSlots.ForEach(x => _slotRepository.Store(x));
          return defaultSlots.Select(x => ScheduleConverter.ConvertToDto(x)).ToList();
       }
    }

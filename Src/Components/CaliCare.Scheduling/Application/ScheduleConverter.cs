@@ -21,6 +21,7 @@ namespace CaliCare.Schedule.Application
          => appointment == null ? null : new AppointmentDto()
          {
             ClinicalActivityId = appointment.ClinicalActivityId,
+            Date = appointment.Date,
             Id = appointment.Id,
             PatientId = appointment.PatientId,
             PatientConditionId = appointment.PatientConditionId,

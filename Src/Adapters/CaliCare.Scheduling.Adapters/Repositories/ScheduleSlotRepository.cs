@@ -25,7 +25,7 @@ namespace CaliCare.Schedule.Adapters.Repositories
       }
 
       public IReadOnlyList<ScheduleSlot> FindAll(DateTime date)
-         => FindAll(date).Where(x => x.Date.Date == date.Date).ToList();
+         => FindAll().Where(x => x.Date.Date == date.Date).ToList();
 
       public void Store(ScheduleSlot[] aggregates)
          => File.WriteAllText(_jsonPath, JsonConvert.SerializeObject(aggregates));
@@ -33,12 +33,12 @@ namespace CaliCare.Schedule.Adapters.Repositories
       public void Store(ScheduleSlot scheduleSlot)
       {
          var slots = FindAll().ToList();
-         var foundSlot = slots.Where(x => x.Id == scheduleSlot.Id).SingleOrDefault();
+         var index = slots.FindIndex(x => x.Id == scheduleSlot.Id);
 
-         if (foundSlot != null)
-            foundSlot = scheduleSlot;
-         else
+         if (index == -1)
             slots.Add(scheduleSlot);
+         else
+            slots[index] = scheduleSlot;
 
          Store(slots.ToArray());
          return;

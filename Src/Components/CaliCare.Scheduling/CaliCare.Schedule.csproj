@@ -45,18 +45,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Commands\Handlers\CreateAppointmentCommandHandler.cs" />
+    <Compile Include="Application\Commands\Handlers\ScheduleNewPatientConsultationCommandHandler.cs" />
     <Compile Include="Application\Commands\Handlers\SeedClinicalActivitiesCommandHandler.cs" />
     <Compile Include="Application\Commands\CreateAppointmentCommand.cs" />
     <Compile Include="Application\Commands\Handlers\StoreScheduleSlotCommandHandler.cs" />
+    <Compile Include="Application\Commands\ScheduleNewPatientConsultationCommand.cs" />
     <Compile Include="Application\Commands\SeedClinicalActivitiesCommand.cs" />
     <Compile Include="Application\Commands\StoreScheduleSlotCommand.cs" />
     <Compile Include="Application\Queries\GetAppointmentQuery.cs" />
     <Compile Include="Application\Queries\GetAppointmentsByClinicalActivityCodeQuery.cs" />
     <Compile Include="Application\Queries\GetClinicalActivityByCodeQuery.cs" />
+    <Compile Include="Application\Queries\GetScheduleSlotsByAppointmentQuery.cs" />
     <Compile Include="Application\Queries\GetScheduleSlotsByDayQuery.cs" />
     <Compile Include="Application\Queries\Handlers\GetAppointmentQueryHandler.cs" />
     <Compile Include="Application\Queries\Handlers\GetAppointmentsByClinicalActivityCodeQueryHandler.cs" />
     <Compile Include="Application\Queries\Handlers\GetClinicalActivityByCodeQueryHandler.cs" />
+    <Compile Include="Application\Queries\Handlers\GetScheduleSlotsByAppointmentQueryHandler.cs" />
     <Compile Include="Application\Queries\Handlers\GetScheduleSlotsByDayQueryHandler.cs" />
     <Compile Include="Application\ScheduleConverter.cs" />
     <Compile Include="Common\AppointmentStatus.cs" />
@@ -71,6 +75,8 @@
     <Compile Include="Ports\Repositories\IAppointmentRepository.cs" />
     <Compile Include="Ports\Repositories\IClinicalActivityRepository.cs" />
     <Compile Include="Ports\Repositories\IScheduleSlotRepository.cs" />
+    <Compile Include="Ports\Services\IConsultationService.cs" />
+    <Compile Include="Ports\Services\IScheduleResourceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IAppointmentSlotService.cs" />
     <Compile Include="Services\AppointmentSlotService.cs" />

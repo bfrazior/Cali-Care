@@ -24,6 +24,8 @@ using CaliCare.Schedule.Adapters.Repositories;
 using CaliCare.Schedule.Domain;
 using CaliCare.Schedule.Ports.Repositories;
 using CaliCare.Schedule.Services;
+using CaliCare.Schedule.Ports.Services;
+using CaliCare.Schedule.Adapters.Services;
 
 namespace CaliCare.WebApi.Adapters.App_Start
 {
@@ -53,7 +55,9 @@ namespace CaliCare.WebApi.Adapters.App_Start
          container.Register<IScheduleSlotRepository, ScheduleSlotRepository>();
          container.Register<IAppointmentRepository, AppointmentRepository>();
          container.Register<IClinicalActivityRepository, ClinicalActivityRepository>();
+
          container.Register<IAppointmentSlotService, AppointmentSlotService>();
+         container.Register<IConsultationService, ConsultationService>();
       }
 
       private static void ConditionRegistrations(Container container)

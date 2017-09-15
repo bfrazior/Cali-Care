@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Linq;
 
+using MediatR;
+
 using CaliCare.Infrastructure.Interfaces;
 using CaliCare.Infrastructure.Extensions;
 using CaliCare.Schedule.Ports.Repositories;
 using CaliCare.Schedule.Domain;
 using CaliCare.Schedule.Services;
-using MediatR;
 
 namespace CaliCare.Schedule.Application.Commands.Handlers
 {
@@ -51,6 +52,7 @@ namespace CaliCare.Schedule.Application.Commands.Handlers
             message.NumberOfSlots);
 
          var appointment = Appointment.Create(
+            slotResult.Item1[0].Date,
             message.ClinicalActivityId, 
             message.PatientId,
             message.PatientConditionId,

@@ -26,17 +26,23 @@ namespace CaliCare.Schedule.Domain
 
       public void AddAppointment(Guid appointmentId)
       {
-         if (Appointments == null)
+         if (Appointments == null || Appointments.Count() == 0)
          {
             Appointments = new Guid[] { appointmentId };
             return;
          }
 
-         if (Appointments.Where(x => x == appointmentId).SingleOrDefault() == null)
+         var appointment = Appointments.Where(x => x == appointmentId).SingleOrDefault();
+         if (Appointments.Where(x => x == appointmentId).SingleOrDefault() == Guid.Empty)
          {
             Appointments = Appointments.Concat(new Guid[] { appointmentId }).ToArray();
             return;
          }
+      }
+
+      public void ReplaceAppointments(Guid[] appointmentIds)
+      {
+         Appointments = appointmentIds;
       }
    }
 }

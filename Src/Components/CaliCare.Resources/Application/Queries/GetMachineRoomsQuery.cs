@@ -2,12 +2,11 @@
 
 using CaliCare.Infrastructure.Interfaces;
 using CaliCare.Resources.Ports.DataTransferObjects;
-using CaliCare.Resources.Common;
 
 namespace CaliCare.Resources.Application.Queries
 {
-   public class GetPhysiciansQuery : IQuery<IReadOnlyList<PhysicianDto>>
+   public class GetMachineRoomsQuery : IQuery<IReadOnlyList<RoomDto>>
    {
-      public PhysicianRole[] FilterRoles { get; set; }
+      public bool FilterAdvancedCapability { get; set; }
    }
 }

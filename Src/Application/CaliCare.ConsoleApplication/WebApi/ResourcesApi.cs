@@ -25,7 +25,6 @@ namespace CaliCare.ConsoleApplication.WebApi
          return new DepartmentDto[0];
       }
 
-
       public static RoomDto GetRoom(Guid id)
       {
          using (var client = new CaliCareHttpClient())

@@ -24,7 +24,7 @@ namespace CaliCare.ConsoleApplication.Views
          var admittedPatient = AdmitPatient(patientName, condition);
 
          if (admittedPatient != null)
-            ScheduleConsult(admittedPatient.Id);
+            ScheduleConsult(admittedPatient.Item1.Id, admittedPatient.Item2.Id);
       }
 
       private static PatientNameDto PatientNameInput()
@@ -120,7 +120,7 @@ namespace CaliCare.ConsoleApplication.Views
          return topography;
       }
 
-      private static PatientDto AdmitPatient(PatientNameDto name, PatientConditionDto condition)
+      private static Tuple<PatientDto, PatientConditionDto> AdmitPatient(PatientNameDto name, PatientConditionDto condition)
       {
          Console.WriteLine();
          Console.WriteLine("Confirm Patient Registration");
@@ -150,10 +150,10 @@ namespace CaliCare.ConsoleApplication.Views
          condition.PatientId = createdPatient.Id;
          var createdCondition = ConditionsApi.CreateCondition(condition);
 
-         return createdPatient;
+         return new Tuple<PatientDto, PatientConditionDto>(createdPatient, createdCondition);
       }
 
-      private static void ScheduleConsult(Guid patientId)
+      private static void ScheduleConsult(Guid patientId, Guid conditionId)
       {
          Console.WriteLine();
          Console.Write("Schedule New Patient Consultation [Y/N]: ");
@@ -162,29 +162,20 @@ namespace CaliCare.ConsoleApplication.Views
          if (!string.Equals(consultValue, "Y", StringComparison.OrdinalIgnoreCase))
             return;
 
-         // Test Code - replace with service call to return next available consult appointment.
          var department = ResourcesApi.GetDepartments().First();
-         var room = ResourcesApi.GetRooms(department.Id).First();
-         var physician = ResourcesApi.GetPhysicians().First();
          var clinicalActivity = ScheduleApi.GetClinicalActivityByCode("54321");
 
          var createAppointmentDto = new CreateAppointmentDto()
          {
             ClinicalActivityId = clinicalActivity.Id,
             Date = DateTime.Now.AddDays(1),
+            DepartmentId = department.Id,
             NumberOfSlots = 32,
             PatientId = patientId,
-            RoomChoices = new Guid[] { room.Id },
-            StaffChoices = new AppointmentStaffDto[] { new AppointmentStaffDto() { AppointmentStaffId = physician.Id, AppointmentStaffType = nameof(Physician) } },
+            PatientConditionId = conditionId,
             StartSlot = 0 
-
-            //ClinicalActivityId = clinicalActivity.Id,
-            //Id = Guid.Empty,
-            //PatientId = patientId,
-            //Staff = new AppointmentStaffDto() { AppointmentStaffId = physician.Id, AppointmentStaffType = nameof(Physician) },
-            //Status = AppointmentStatus.Pending
          };
-         ScheduleApi.CreateAppointment(createAppointmentDto);
+         ScheduleApi.CreateConsultation(createAppointmentDto);
       }
 
       private static PatientConditionDto EmptyNonCancerPatientCondition(ConditionType type)

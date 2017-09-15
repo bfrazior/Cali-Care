@@ -4,7 +4,6 @@ using System.Linq;
 using ConsoleTables;
 
 using CaliCare.ConsoleApplication.WebApi;
-using CaliCare.Resources.Ports.DataTransferObjects;
 
 namespace CaliCare.ConsoleApplication.Views
 {
@@ -20,8 +19,9 @@ namespace CaliCare.ConsoleApplication.Views
          var consults = ScheduleApi.GetAppointments("54321");
          foreach (var consult in consults)
          {
-            var start = consult.Slots.Min(x => x.SlotNumber);
-            var end = consult.Slots.Max(x => x.SlotNumber);
+            var slots = ScheduleApi.GetAppointmentSlots(consult.Date.Date, consult.Id);
+            var start = slots.Min(x => x.SlotNumber);
+            var end = slots.Max(x => x.SlotNumber);
 
             var patient = PatientsApi.GetPatient(consult.PatientId);
             var patientName = $"{patient.Name.LastName}, {patient.Name.FirstName} {patient.Name.MiddleName}";
@@ -31,7 +31,7 @@ namespace CaliCare.ConsoleApplication.Views
 
             var room = ResourcesApi.GetRoom(consult.RoomId);
 
-            table.AddRow(consult.Slots[0].Date.ToShortDateString(), start, end, room.Name, patientName, physicianName);
+            table.AddRow(consult.Date.ToShortDateString(), start, end, room.Name, patientName, physicianName);
          }
 
          table.Write();

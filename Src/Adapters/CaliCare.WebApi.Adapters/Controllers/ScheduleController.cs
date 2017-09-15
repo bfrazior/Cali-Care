@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 
 using MediatR;
@@ -36,10 +37,31 @@ namespace CaliCare.WebApi.Adapters.Controllers
          });
       }
 
+      [Route("appointments/consult/create")]
+      public void CreateConsultAppointment([FromBody]CreateAppointmentDto createAppointmentDto)
+      {
+         _mediator.SendSync(new ScheduleNewPatientConsultationCommand()
+         {
+            ClinicalActivityId = createAppointmentDto.ClinicalActivityId,
+            Date = createAppointmentDto.Date,
+            DepartmentId = createAppointmentDto.DepartmentId,
+            NumberOfSlots = createAppointmentDto.NumberOfSlots,
+            PatientConditionId = createAppointmentDto.PatientConditionId,
+            PatientId = createAppointmentDto.PatientId,
+            StartSlot = createAppointmentDto.StartSlot
+         });
+      }
+
       [Route("appointments/{clinicalActivityCode}")]
       public IEnumerable<AppointmentDto> GetAppointmentsByClinicalActivityCode(string clinicalActivityCode)
       {
          return _mediator.SendSync(new GetAppointmentsByClinicalActivityCodeQuery() { ClinicalActivityCode = clinicalActivityCode });
+      }
+
+      [Route("appointments/slots/{appointmentId:Guid}")]
+      public IEnumerable<ScheduleSlotDto> GetAppointmentSlots(Guid appointmentId, string date)
+      {
+         return _mediator.SendSync(new GetScheduleSlotsByAppointmentQuery() { AppointmentDate = DateTime.Parse(date), AppointmentId = appointmentId });
       }
 
       [Route("activities/{code}")]
